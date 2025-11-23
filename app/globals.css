@@ -243,16 +243,21 @@
   @apply bg-card border-2 border-border;
   padding: var(--space-6);
   box-shadow: 4px 4px 0px var(--foreground);
-  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 5px 5px 0px var(--foreground);
 }
 
 .card-interactive {
   @apply bg-card border-2 border-border cursor-pointer;
   padding: var(--space-6);
   box-shadow: 4px 4px 0px var(--foreground);
-  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-interactive:hover {
@@ -260,23 +265,32 @@
   box-shadow: 6px 8px 0px var(--foreground);
 }
 
+.card-interactive:active {
+  transform: translateY(-2px);
+  box-shadow: 4px 6px 0px var(--foreground);
+}
+
 .card-elevated {
   @apply bg-card border-3 border-border;
   padding: var(--space-8);
   box-shadow: 8px 8px 0px var(--foreground);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .upload-zone {
   @apply border-2 border-dashed border-primary text-center cursor-pointer bg-secondary;
   padding: var(--space-10);
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: inset 0 0 0 1px var(--gray-30);
+  position: relative;
 }
 
 .upload-zone:hover {
   @apply border-primary;
   box-shadow: inset 0 0 0 2px var(--foreground);
   background: var(--gray-10);
+  transform: translateY(-2px);
 }
 
 .upload-zone.dragging {
@@ -285,6 +299,16 @@
   border-style: solid;
   transform: scale(1.02);
   box-shadow: 0 0 0 4px var(--white-100), 0 0 0 6px var(--foreground);
+  animation: pulse-border 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 4px var(--white-100), 0 0 0 6px var(--foreground);
+  }
+  100% {
+    box-shadow: 0 0 0 6px var(--white-100), 0 0 0 8px var(--foreground);
+  }
 }
 
 .upload-icon {
@@ -377,6 +401,116 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* Loading animation - Document scanning */
+@keyframes check-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes processing-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes processing-dot {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes success-pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes celebration {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+/* Animation utility classes */
+.animate-check-pop {
+  animation: check-pop 0.3s ease-out;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-processing-dot {
+  animation: processing-dot 1.2s ease-in-out infinite;
+}
+
+.animate-success-pop {
+  animation: success-pop 0.5s ease-out;
+}
+
+.animate-celebration {
+  animation: celebration 1s ease-in-out 2;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-processing-pulse {
+  animation: processing-pulse 2s ease-in-out infinite;
 }
 
 .animate-pulse-neobrutal {
