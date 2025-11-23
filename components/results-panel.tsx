@@ -16,10 +16,24 @@ export default function ResultsPanel({ pdfUrl, downloadUrl, onReset }: ResultsPa
   return (
     <div className="space-y-6">
       {/* Success Celebration */}
-      <div className="card-elevated bg-primary text-primary-foreground text-center animate-in zoom-in">
-        <div className="text-6xl mb-4 animate-in zoom-in delay-100">🎉</div>
-        <h2 className="text-white mb-2">Your Resume is Ready!</h2>
-        <p className="text-lg opacity-90">Optimized and ATS-approved</p>
+      <div className="card-elevated bg-primary text-primary-foreground text-center animate-in zoom-in relative overflow-hidden">
+        {/* Animated background accent */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-40 h-40 bg-white rounded-full translate-x-1/2 translate-y-1/2 animate-pulse" style={{ animationDelay: "0.5s" }} />
+        </div>
+
+        <div className="relative z-10">
+          <div className="text-6xl mb-4 animate-in zoom-in delay-100 animate-celebration">🎉</div>
+          <h2 className="text-white mb-2">Your Resume is Ready!</h2>
+          <p className="text-lg opacity-90">Optimized and ATS-approved</p>
+
+          {/* Success indicator */}
+          <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-white/20 border-2 border-white/40">
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+            <span className="text-sm font-bold text-white">Processing Complete</span>
+          </div>
+        </div>
       </div>
 
       {/* Preview Section */}
