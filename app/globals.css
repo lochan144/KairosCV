@@ -403,66 +403,27 @@
   }
 }
 
-/* Enhanced loader animations */
-@keyframes loader-outer {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 6px 6px 0px var(--foreground);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 8px 8px 0px var(--foreground);
-  }
-}
-
-@keyframes loader-middle {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    box-shadow: 4px 4px 0px var(--foreground);
-  }
-  50% {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow: 6px 6px 0px var(--foreground);
-  }
-}
-
-@keyframes loader-inner {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    box-shadow: 2px 2px 0px var(--foreground);
-  }
-  50% {
-    transform: scale(1.08) rotate(-2deg);
-    box-shadow: 4px 4px 0px var(--foreground);
-  }
-}
-
-@keyframes corner-pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
+/* Loading animation - Document scanning */
+@keyframes check-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
   }
   50% {
     transform: scale(1.2);
-    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-@keyframes float-horizontal {
-  0%, 100% {
-    transform: translateX(0);
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translateX(8px);
-  }
-}
-
-@keyframes float-horizontal-reverse {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-8px);
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -523,8 +484,13 @@
   }
 }
 
-.animate-loader-outer {
-  animation: loader-outer 2s ease-in-out infinite;
+/* Animation utility classes */
+.animate-check-pop {
+  animation: check-pop 0.3s ease-out;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
 }
 
 .animate-processing-dot {
@@ -537,26 +503,6 @@
 
 .animate-celebration {
   animation: celebration 1s ease-in-out 2;
-}
-
-.animate-loader-middle {
-  animation: loader-middle 2.5s ease-in-out infinite 0.2s;
-}
-
-.animate-loader-inner {
-  animation: loader-inner 3s ease-in-out infinite 0.4s;
-}
-
-.animate-corner-pulse {
-  animation: corner-pulse 1.5s ease-in-out infinite;
-}
-
-.animate-float-horizontal {
-  animation: float-horizontal 2s ease-in-out infinite;
-}
-
-.animate-float-horizontal-reverse {
-  animation: float-horizontal-reverse 2s ease-in-out infinite;
 }
 
 .animate-shimmer {
