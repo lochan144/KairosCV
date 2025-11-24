@@ -1,15 +1,34 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Header from "@/components/header"
 import Footer from "@/components/Footer"
+import LoadingAnimation from "@/components/loading-animation"
 import { ArrowRightIcon, UploadIcon, SparklesIcon, FileIcon } from "@/components/icons"
 
 export default function HomePage() {
-  return (
-    <main className="min-h-screen bg-background text-foreground">
-      <Header />
+  const [isLoading, setIsLoading] = useState(true)
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-12 md:py-20">
+  useEffect(() => {
+    // Show loading animation briefly on initial load
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <LoadingAnimation />
+  }
+
+  return (
+    <>
+      <Header />
+      <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32">
+        {/* Hero Section */}
+        <section className="container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <div className="mb-12 md:mb-16 animate-in fade-in">
@@ -39,14 +58,12 @@ export default function HomePage() {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
-            <div className="card-interactive group text-center animate-in fade-in delay-100">
-              <div className="mb-6 flex justify-center">
-                <div className="relative">
-                  <UploadIcon className="w-16 h-16 stroke-2" />
-                  <span className="absolute -top-2 -right-2 w-8 h-8 bg-black text-white font-black flex items-center justify-center text-sm border-2 border-black">
-                    1
-                  </span>
-                </div>
+            <div className="card-interactive group text-center animate-in fade-in delay-100 relative">
+              <span className="absolute top-4 left-4 w-10 h-10 bg-primary text-primary-foreground font-black flex items-center justify-center text-lg border-2 border-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                1
+              </span>
+              <div className="mb-6 mt-8 flex justify-center">
+                <UploadIcon className="w-16 h-16 stroke-2" />
               </div>
               <h3 className="mb-3">Upload</h3>
               <p className="text-sm">
@@ -54,14 +71,12 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-interactive group text-center animate-in fade-in delay-200">
-              <div className="mb-6 flex justify-center">
-                <div className="relative">
-                  <SparklesIcon className="w-16 h-16 stroke-2" />
-                  <span className="absolute -top-2 -right-2 w-8 h-8 bg-black text-white font-black flex items-center justify-center text-sm border-2 border-black">
-                    2
-                  </span>
-                </div>
+            <div className="card-interactive group text-center animate-in fade-in delay-200 relative">
+              <span className="absolute top-4 left-4 w-10 h-10 bg-primary text-primary-foreground font-black flex items-center justify-center text-lg border-2 border-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                2
+              </span>
+              <div className="mb-6 mt-8 flex justify-center">
+                <SparklesIcon className="w-16 h-16 stroke-2" />
               </div>
               <h3 className="mb-3">AI Enhance</h3>
               <p className="text-sm">
@@ -69,14 +84,12 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-interactive group text-center animate-in fade-in delay-300">
-              <div className="mb-6 flex justify-center">
-                <div className="relative">
-                  <FileIcon className="w-16 h-16 stroke-2" />
-                  <span className="absolute -top-2 -right-2 w-8 h-8 bg-black text-white font-black flex items-center justify-center text-sm border-2 border-black">
-                    3
-                  </span>
-                </div>
+            <div className="card-interactive group text-center animate-in fade-in delay-300 relative">
+              <span className="absolute top-4 left-4 w-10 h-10 bg-primary text-primary-foreground font-black flex items-center justify-center text-lg border-2 border-primary shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                3
+              </span>
+              <div className="mb-6 mt-8 flex justify-center">
+                <FileIcon className="w-16 h-16 stroke-2" />
               </div>
               <h3 className="mb-3">Download</h3>
               <p className="text-sm">
@@ -105,7 +118,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   )
 }

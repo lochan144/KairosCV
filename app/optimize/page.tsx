@@ -135,15 +135,15 @@ export default function Home() {
   }
 
   return (
-    <main
-      className="min-h-screen bg-background text-foreground"
-      role="main"
-      itemScope
-      itemType="https://schema.org/WebApplication"
-    >
+    <>
       <Header />
-
-      <div className="container mx-auto px-4 py-8 md:py-16 max-w-4xl">
+      <main
+        className="min-h-screen bg-background text-foreground pt-28 md:pt-32"
+        role="main"
+        itemScope
+        itemType="https://schema.org/WebApplication"
+      >
+        <div className="container mx-auto px-4 py-8 md:py-16 max-w-4xl">
         <section aria-labelledby="upload-section">
           {!isProcessing && !pdfUrl && !error ? (
             <FileUploader onFileSelect={handleFileSelect} disabled={isProcessing} />
@@ -160,9 +160,10 @@ export default function Home() {
             <ResultsPanel pdfUrl={pdfUrl} downloadUrl={downloadUrl} onReset={handleReset} />
           )}
         </section>
-      </div>
+        </div>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   )
 }

@@ -5,10 +5,10 @@ import { ArrowRightIcon } from "@/components/icons"
 
 export default function IntentPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <>
       <Header />
-
-      <section className="container mx-auto px-4 py-12 md:py-20">
+      <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32">
+        <section className="container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-3xl mx-auto">
           {/* Page Title */}
           <div className="mb-12 animate-in fade-in">
@@ -117,9 +117,10 @@ export default function IntentPage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   )
 }
