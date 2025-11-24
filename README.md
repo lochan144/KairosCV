@@ -433,11 +433,28 @@ We welcome contributions! Please follow these steps:
 
 See [CLAUDE.md](CLAUDE.md) for detailed contribution guidelines.
 
+### Syncing Your Fork
+
+If you've forked this repository, keep it up-to-date with the original:
+
+```bash
+# Quick sync using the provided script
+./sync-fork.sh
+
+# Or manually:
+git fetch upstream
+git merge upstream/main
+git push origin your-branch
+```
+
+See **[FORK_SYNC_GUIDE.md](FORK_SYNC_GUIDE.md)** for detailed instructions.
+
 ---
 
 ## Documentation
 
 - **[CLAUDE.md](CLAUDE.md)** - AI agent performance optimization guide
+- **[FORK_SYNC_GUIDE.md](FORK_SYNC_GUIDE.md)** - How to sync your fork with upstream
 - **[MVP_ROADMAP_AND_RISK_ANALYSIS.md](MVP_ROADMAP_AND_RISK_ANALYSIS.md)** - Product roadmap and risks
 - **[TESTING_GUIDE.md](TESTING_GUIDE.md)** - How to write and run tests
 - **[TEST_COVERAGE.md](TEST_COVERAGE.md)** - Current test coverage report
